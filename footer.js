@@ -1,20 +1,38 @@
 const product = [
     {
         id: 0,
-        name: "Bag",
-        price: 100,
+        name: "Beef Burger",
+        price: 150,
+        path: "./assets/Burgers/BeefBurger.jpg"
        
     },
      {
         id: 1,
-        name: "Dress",
-        price: 50,
-    
+        name: "Bacon & Beef Burger",
+        price: 175,
+        path: "./assets/Burgers/BaconAndBeefBurger.jpg"
     },
      {
         id: 2,
-        name: "Short",
-        price: 20,
+        name: "BBQ Bacon Burger",
+        price: 220,
+        path: "./assets/Burgers/BbqBaconBurger.jpg"
+        
+    },
+    {
+        id: 3,
+        name: "Mushroom Burger",
+        price: 220,
+        path: "./assets/Burgers/CaramelizedOnionMushroomBurger.jpg"
+       
+        
+    },
+    {
+        id: 4,
+        name: "Cheese Burger",
+        price: 220,
+        path: "./assets/Burgers/BeefBurger.jpg"
+       
         
     }
 ]
@@ -25,13 +43,32 @@ product.forEach(element => {
 
 let itemId = element.id;
 let itemName = element.name;
-let itemPrice = element.price; 
+let itemPrice = element.price;
+let itemPath = element.path; 
 let itemList = document.createElement("p");
-itemList.innerHTML = `${itemName}` + ` : ` + `${itemPrice}  ` + `<button onclick="addCart(this,'${itemId}','${itemName}','${itemPrice}')" >add cart </button>`;
-// console.log(itemList); 
+itemList.innerHTML = `
+    <div class="d-flex flex-row border border-primary border-1 p-1 rounded-2 " style="height: 240px; width: 200px;">
+        <div class="d-flex flex-column " style="width: 100%;" >
+            <div class="d-flex justify-content-center align-items-center p-3 " >
+            <img src="${itemPath}" style="height: 100px; width:100%">
+            </div>
+            <div class="d-flex justify-content-center align-items-center " style="height: 40px;">
+            <p class="fs-6 font-weight-bold" >${itemName}</p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center "
+            style="height: 20px;">
+                <p>${itemPrice}</p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center "
+            style="height: 150px;" >
+                <button class="btn btn-primary" id="${itemId}" onclick="addCart(this,'${itemId}','${itemName}','${itemPrice}')">Add to Cart
+                </button>
+            <div>
+        </div>
+    </div>`;
+
 
 itemListContainer.append(itemList);
-
 
 });
 
@@ -45,7 +82,6 @@ const ulItems = document.getElementById('list');
 
 function addCart(dis,Itemid,itemName,itemPrice){
 
-// document.querySelector('.modal').style.display="Flex";
 dis.disabled = true;
 let id = Itemid;
 let name = itemName;
@@ -69,16 +105,10 @@ li.innerHTML = `<p>` + `${cart[lastItems].name}` + ` - ` + `${cart[lastItems].pr
 ` + `<span style=" margin-left:2em;" id="subTotal"> ${cart[lastItems].price} </span>` +`<button style="margin-left:2em;" onclick="removeItem(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}','${lastItems}')" >Remove</button>` + `</p>`   ; 
 ulItems.append(li);
 
-// for(i=0; i < cart.length; i++){
-// sum += parseInt(cart[i].price);
-// }
-// console.log(sum);
-
 // accumulator the first value is set to 0 = u can see it 2nd parameter
 // accumalator is current value
 sum = cart.reduce((accumulator, product) => parseInt(accumulator) + parseInt(product.price), 0);
 
-// console.log('Total price:', total);
 console.log(sum);
 
 total.innerHTML = sum;   
@@ -92,7 +122,8 @@ total.innerHTML = sum;
 
 function removeItem(button,Rid,Rname,Rprice,index){
 // console.log(index);
-var listItem = button.closest('li');
+document.getElementById(Rid).disabled = false;
+let listItem = button.closest('li');
 let sum = 0;
 let currentTotal = document.getElementById('total').textContent;
 if (listItem) {
@@ -119,21 +150,13 @@ let iPrice = itemPrice;
 let newPrice = quantity * iPrice;
 console.log(itemID + " " + itemName + " -- " + quantity + "Price" + newPrice);
 console.log(index)
-// console.log(newPrice);
-// console.log("Price:" + iPrice)
-// console.log("NewPrice:" + newPrice)  
 var totalSum = 0;
 
-// cart[index].price = newPrice;
 
 const productToUpdate = cart.find(product => product.id === itemID);
 if (productToUpdate) {
     productToUpdate.price = newPrice;
  }
-
-// cart.forEach(function(product) {
-// totalSum += parseInt(product.price);
-// });
 
 totalSum = cart.reduce((accumulator, product) => parseInt(accumulator) + parseInt(product.price), 0);
 
