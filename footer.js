@@ -47,8 +47,8 @@ let itemPrice = element.price;
 let itemPath = element.path; 
 let itemList = document.createElement("p");
 itemList.innerHTML = `
-    <div class="d-flex flex-row border border-primary border-1 p-1 rounded-2 " style="height: 240px; width: 200px;">
-        <div class="d-flex flex-column " style="width: 100%;" >
+    <div class="d-flex flex-row border border-warning border-2 p-1 rounded-2 " style="height: 260px; width: 220px;">
+        <div class="d-flex flex-column" style="width: 100%;" >
             <div class="d-flex justify-content-center align-items-center p-3 " >
             <img src="${itemPath}" style="height: 100px; width:100%">
             </div>
