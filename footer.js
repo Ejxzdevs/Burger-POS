@@ -29,12 +29,34 @@ const product = [
     },
     {
         id: 4,
-        name: "Cheese Burger",
+        name: "Veggie Burger",
         price: 220,
-        path: "./assets/Burgers/BeefBurger.jpg"
+        path: "./assets/Burgers/VeggieBurger.jpg"
        
         
+    },
+    {
+        id: 5,
+        name: "Cheese Burger",
+        price: 120,
+        path: "./assets/Burgers/CheeseBurger.jpg"
+        
+    },
+    {
+        id: 6,
+        name: "Crispy Chicken Burger",
+        price: 270,
+        path: "./assets/Burgers/CrispyChickenBurger.jpg"
+        
+    },
+    {
+        id: 7,
+        name: "Hawai Burger",
+        price: 230,
+        path: "./assets/Burgers/Hawai Burger.jpg"
+        
     }
+
 ]
 
 
@@ -47,7 +69,7 @@ let itemPrice = element.price;
 let itemPath = element.path; 
 let itemList = document.createElement("p");
 itemList.innerHTML = `
-    <div class="d-flex flex-row border border-warning border-2 p-1 rounded-2 " style="height: 260px; width: 220px;">
+    <div class="d-flex flex-row border border-warning border-2 p-1 rounded-2 " style="height: 240px; width: 192px;">
         <div class="d-flex flex-column" style="width: 100%;" >
             <div class="d-flex justify-content-center align-items-center p-3 " >
             <img src="${itemPath}" style="height: 100px; width:100%">
@@ -61,7 +83,7 @@ itemList.innerHTML = `
             </div>
             <div class="d-flex justify-content-center align-items-center "
             style="height: 150px;" >
-                <button class="btn btn-primary" id="${itemId}" onclick="addCart(this,'${itemId}','${itemName}','${itemPrice}')">Add to Cart
+                <button style="height: 35px;"class="btn btn-primary h-1" id="${itemId}" onclick="addCart(this,'${itemId}','${itemName}','${itemPrice}')">Add to Cart
                 </button>
             <div>
         </div>
@@ -98,12 +120,23 @@ cart.push(addItems);
 
 // Fetch names of all items and display to HTML
 let lastItems = cart.length - n;
-let li = document.createElement("li");
+let li = document.createElement("tr");
 // In order to get the last value of array u have to -1 in lenght of array
 // in arr.lenght counting the number of data in array eg: 1-2-3-4-5 = 5
-li.innerHTML = `<p>` + `${cart[lastItems].name}` + ` - ` + `${cart[lastItems].price}`+ `<input style="margin-left:2em; width:50px;" type="number" id="myInput" max="10" min="1" value="1" onchange="QuantiityChange(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}')" />
-` + `<span style=" margin-left:2em;" id="subTotal"> ${cart[lastItems].price} </span>` +`<button style="margin-left:2em;" onclick="removeItem(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}','${lastItems}')" >Remove</button>` + `</p>`   ; 
+li.innerHTML = `
+<td >${cart[lastItems].name}</td>
+<td>
+  <input style="width:30px;" class="quantity-input" type="number" max="10" min="1" value="1" onchange="QuantiityChange(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}')">
+</td>
+<td class="subtotal">$${cart[lastItems].price}</td>
+<td>
+  <button class="btn btn-danger" onclick="removeItem(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}','${lastItems}')">
+    <i class="bi bi-trash3"></i>
+  </button>
+</td>
+`; 
 ulItems.append(li);
+
 
 // accumulator the first value is set to 0 = u can see it 2nd parameter
 // accumalator is current value
