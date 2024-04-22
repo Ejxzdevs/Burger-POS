@@ -126,7 +126,7 @@ let li = document.createElement("tr");
 li.innerHTML = `
 <td >${cart[lastItems].name}</td>
 <td>
-  <input style="width:30px;" class="quantity-input" type="number" max="10" min="1" value="1" onchange="QuantiityChange(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}')">
+  <input style="width:30px;" class="quantity-input" type="number" max="9" min="1" value="1" onchange="QuantiityChange(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}')">
 </td>
 <td id="${cart[lastItems].id}SB" class="subtotal">${cart[lastItems].price}</td>
 <td>
