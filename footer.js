@@ -128,7 +128,7 @@ li.innerHTML = `
 <td>
   <input style="width:30px;" class="quantity-input" type="number" max="10" min="1" value="1" onchange="QuantiityChange(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}')">
 </td>
-<td class="subtotal">$${cart[lastItems].price}</td>
+<td id="${cart[lastItems].id}SB" class="subtotal">${cart[lastItems].price}</td>
 <td>
   <button class="btn btn-danger" onclick="removeItem(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}','${lastItems}')">
     <i class="bi bi-trash3"></i>
@@ -154,9 +154,10 @@ total.innerHTML = sum;
 
 
 function removeItem(button,Rid,Rname,Rprice,index){
-// console.log(index);
+var row = button.parentNode.parentNode;
+row.parentNode.removeChild(row);
 document.getElementById(Rid).disabled = false;
-let listItem = button.closest('li');
+let listItem = button.closest('td');
 let sum = 0;
 let currentTotal = document.getElementById('total').textContent;
 if (listItem) {
@@ -178,9 +179,12 @@ const index = cart.length - 1;
 const itemID = id;
 const itemName = name;
 const quantity = quan.value;
+console.log(itemID);
+
 let total = document.getElementById('total');
 let iPrice = itemPrice;
 let newPrice = quantity * iPrice;
+document.getElementById(itemID+"SB").textContent = quantity * iPrice;
 console.log(itemID + " " + itemName + " -- " + quantity + "Price" + newPrice);
 console.log(index)
 var totalSum = 0;
