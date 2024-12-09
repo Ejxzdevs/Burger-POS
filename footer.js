@@ -126,9 +126,9 @@ const product = [
     li.innerHTML = `
         <td class="text-center fw-medium " style="width: 100px;" >${cart[lastItems].name}</td>
         <td class="text-center" >
-            <input style="width:30px;" class="quantity-input" type="number" max="9" min="1" value="1" onchange="QuantiityChange(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}')">
+            <input style="width:30px;" class="quantity-input" type="number" max="9" min="1" value="1" onchange="QuantityChange(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}')">
         </td>
-        <td id="${cart[lastItems].id}" class="subtotal text-center">${cart[lastItems].price}</td>
+        <td id="${cart[lastItems].id}SB" class="subtotal text-center">${cart[lastItems].price}</td>
         <td class="text-center">
             <button class="btn btn-danger" onclick="removeItem(this,'${cart[lastItems].id}','${cart[lastItems].name}','${cart[lastItems].price}','${lastItems}')">
                 <i class="bi bi-trash3"></i>
@@ -160,7 +160,7 @@ const product = [
 }
 
     // METHOD FOR INCREASE OR DECREASE QTY 
-    function QuantiityChange(quan,id,name,itemPrice){
+    function QuantityChange(quan,id,name,itemPrice){
         const index = cart.length - 1;
         const itemID = id;
         const itemName = name;
