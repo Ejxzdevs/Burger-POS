@@ -8,38 +8,45 @@
     <link rel="stylesheet" href="style.css">
     <title>POS Burger</title>
 </head>
-<body>
-    <header class="p-1" style="height: 10vh; background-color: #f8b10a">
-        <p class="font-weight-bold text-capitalized text-white " style="font-size: 1.5rem; font-family: 'Roboto', sans-serif; margin-left: 1em;"><span style="font-size: 2rem; font-weight: bolder; color: black;">B</span>urger Shop</p>
+<body >
+    <header class="p-1" style="height: 50px; background-color: #f8b10a">
+        <p class="font-weight-bold text-capitalized text-white " style="font-size: 1.5rem; font-family: 'Roboto', sans-serif; margin-left: 1em;">
+            <span style="font-size: 32px; font-weight: bold; color: black;">B</span>urger Shop
+        </p>
     </header >
-    <main class="container-fluid d-flex flex-row justify-content-between p-1  " style="height: auto; background-color: #FFFFFF;">
-        <div id="itemlist" class="border-right border-secondary d-flex flex-wrap gap-4 p-4 " style="width: 69.5vw; background-color: #EDF1FF;">
+    <main class="container-fluid d-flex flex-row " style="height: 93%; background-color: #FFFFFF;">
+        <div id="itemlist" class="d-flex flex-wrap justify-content-center align-items-center gap-2 pt-2 " style="width: 70%;"  >
             <!-- Content for itemlist -->
         </div>
-        <div id="orderList" class="border-left border-primary border-3" style="width: 28vw; background-color: #EDF1FF; display: flex; flex-direction: column; justify-content: space-between;">
+        <div id="orderList" class="border" style=" width: 30%; overflow-y: auto; display: flex; flex-direction: column; justify-content: space-between;">
             <!-- Content for orderList -->
             <table class="table table-striped">
                 <thead>
-                  <tr>
-                    <th>Order</th>
-                    <th>Quantity</th>
+                  <tr class="text-center" style="font-size: 14px;" >
+                    <th style="width: 100px;" >Name</th>
+                    <th>Qty</th>
                     <th>Price</th>
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody id="list">
+                <tbody id="list" style="height: 100%; line-height: 20px; font-size: 12px; ">
                   
                 </tbody>
-              </table>
-            <p style="padding-left: .5em;
-             height: 4em; display: flex; 
-             align-items: center;
-            font-weight: 600;
-             border: #f8b10a solid 2px;
-             border-radius: 5px;
-             
-             
-             ">Total Amount:&nbsp;&nbsp;<span id="total"></span></p>
+                </table>
+                    <p class="ps-3 m-0 shadow" style="
+                        width: 28.2%;
+                        height: 3em; 
+                        display: flex; 
+                        align-items: center;
+                        font-weight: 400;
+                        border-top: #f8b10a solid 1px;
+                        border-radius: 5px;
+                        position: fixed;
+                        bottom: 0;
+                        z-index: 2;
+                        font-size: 15px;
+                        background-color: #FFFFFF;
+                    ">Total Price:&nbsp;&nbsp;<span id="total"></span></p>
         </div>
     </main>
 </body>
